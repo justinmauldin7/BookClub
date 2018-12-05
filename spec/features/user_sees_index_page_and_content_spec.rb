@@ -34,7 +34,6 @@ describe 'book_index' do
       author_2 = Author.create(name: 'Rock Woman')
       author_3 = Author.create(name: 'Rock Child')
 
-
       rel_1 = BookAuthor.create(book_id: book_1.id, author_id: author_1.id)
       rel_2 = BookAuthor.create(book_id: book_2.id, author_id: author_2.id)
       rel_3 = BookAuthor.create(book_id: book_2.id, author_id: author_3.id)
