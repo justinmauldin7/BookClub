@@ -62,33 +62,34 @@ describe "as user can see a single book show page" do
     review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2.id)
 
     visit book_path(book_2)
+    save_and_open_page
 
     within "#review-#{review_3.id}" do
-      expect(page).to have_content(reivew_3.title)
-      expect(page).to have_content(reivew_3.rating)
-      expect(page).to have_content(reivew_3.description)
-      expect(page).to have_content(reivew_3.user)
+      expect(page).to have_content(review_3.title)
+      expect(page).to have_content(review_3.rating)
+      expect(page).to have_content(review_3.description)
+      expect(page).to have_content(review_3.user.username)
     end
 
-    within "#review-#{review_3.id}" do
-      expect(page).to have_content(reivew_4.title)
-      expect(page).to have_content(reivew_4.rating)
-      expect(page).to have_content(reivew_4.description)
-      expect(page).to have_content(reivew_4.user)
+    within "#review-#{review_4.id}" do
+      expect(page).to have_content(review_4.title)
+      expect(page).to have_content(review_4.rating)
+      expect(page).to have_content(review_4.description)
+      expect(page).to have_content(review_4.user.username)
     end
 
-    within "#review-#{review_3.id}" do
-      expect(page).to have_content(reivew_5.title)
-      expect(page).to have_content(reivew_5.rating)
-      expect(page).to have_content(reivew_5.description)
-      expect(page).to have_content(reivew_5.user)
+    within "#review-#{review_5.id}" do
+      expect(page).to have_content(review_5.title)
+      expect(page).to have_content(review_5.rating)
+      expect(page).to have_content(review_5.description)
+      expect(page).to have_content(review_5.user.username)
     end
 
-    within "#review-#{review_3.id}" do
-      expect(page).to have_content(reivew_6.title)
-      expect(page).to have_content(reivew_6.rating)
-      expect(page).to have_content(reivew_6.description)
-      expect(page).to have_content(reivew_6.user)
+    within "#review-#{review_6.id}" do
+      expect(page).to have_content(review_6.title)
+      expect(page).to have_content(review_6.rating)
+      expect(page).to have_content(review_6.description)
+      expect(page).to have_content(review_6.user.username)
     end
 
   end

@@ -1,10 +1,18 @@
-<div id="book-<%= @book.id %>"
+<div id="book-<%= @book.id %>">
   <h3><%= @book.title %></h3>
   <% @book.authors.each do |author| %>
   <h4><%= author.name %></h4>
   <% end %>
   <h4>Pages: <%= @book.pages %></h4>
   <h4>Year: <%= @book.year %></h4>
-  <h4>Total reviews: <%= @book.reviews.count %></h4>
-  <h4>Average rating: <%= @book.average_rating(@book.id) %></h4>
+  <h4>Total reviews: <%= @book.review_count %></h4>
+  <h4>Average rating: <%= @book.average_rating %></h4>
 </div>
+
+  <% @reviews.each do |review| %>
+  <div id="review-<%= review.id %>">
+  <h4>Review Title: <%= review.title %></h4>
+  <h4>Review User: <%= review.user.username %></h4>
+  <h4>Review Rating: <%= review.rating %></h4>
+  <p>Review: <%= review.description %></p>
+  <% end %>
