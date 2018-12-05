@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :reviews
 
-  def self.average_rating(book_id)
-    Review.where("book_id = #{book_id}".average(:rating))
+  def average_rating(book_id)
+    Book.where("id = #{book_id}").first.reviews.average(:rating)
   end
 end
