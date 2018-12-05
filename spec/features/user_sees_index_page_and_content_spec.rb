@@ -60,12 +60,12 @@ describe 'user_index' do
       user_3 = User.create(username: 'xxTEDxx')
       user_4 = User.create(username: '133t')
 
-      review_1 = Review.create(title: 'This Book Was Gneiss', rating: 5, description: 'Super rad', user_id: user_1.id, book_id: book_1)
-      review_2 = Review.create(title: 'This Book Was Terrible', rating: 1, description: 'Mega terrible', user_id: user_2.id, book_id: book_1)
-      review_3 = Review.create(title: 'This Book Was Solid', rating: 5, description: 'Solid', user_id: user_1.id, book_id: book_2)
-      review_4 = Review.create(title: 'This Book Was Horrible', rating: 1, description: 'Bad Bad Bad', user_id: user_2.id, book_id: book_2)
-      review_5 = Review.create(title: 'This Book Was Terrific', rating: 4, description: 'Super x99', user_id: user_3.id, book_id: book_2)
-      review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2)
+      review_1 = Review.create(title: 'This Book Was Gneiss', rating: 5, description: 'Super rad', user_id: user_1.id, book_id: book_1.id)
+      review_2 = Review.create(title: 'This Book Was Terrible', rating: 1, description: 'Mega terrible', user_id: user_2.id, book_id: book_1.id)
+      review_3 = Review.create(title: 'This Book Was Solid', rating: 5, description: 'Solid', user_id: user_1.id, book_id: book_2.id)
+      review_4 = Review.create(title: 'This Book Was Horrible', rating: 1, description: 'Bad Bad Bad', user_id: user_2.id, book_id: book_2.id)
+      review_5 = Review.create(title: 'This Book Was Terrific', rating: 4, description: 'Super x99', user_id: user_3.id, book_id: book_2.id)
+      review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2.id)
 
       visit '/books'
 
