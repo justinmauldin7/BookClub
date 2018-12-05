@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe 'user_index' do
+describe 'book_index' do
   describe 'as a user' do
     it 'can see all books' do
       book_1 = Book.create(title:'How To Test Ruby', pages: 2, year: 1934)
       book_2 = Book.create(title:'How To Test Diamonds', pages: 3853, year: 1895)
       book_3 = Book.create(title:'How To Test Tests', pages: 64, year: 2018)
 
-      visit '/books'
+      visit books_path
 
       within "#book-#{book_1.id}" do
         expect(page).to have_content(book_1.title)
@@ -32,16 +32,21 @@ describe 'user_index' do
 
       author_1 = Author.create(name: 'Rock Man')
       author_2 = Author.create(name: 'Rock Woman')
+      author_3 = Author.create(name: 'Rock Child')
+
 
       rel_1 = BookAuthor.create(book_id: book_1.id, author_id: author_1.id)
       rel_2 = BookAuthor.create(book_id: book_2.id, author_id: author_2.id)
+      rel_3 = BookAuthor.create(book_id: book_2.id, author_id: author_3.id)
 
       visit '/books'
+      
       within "#book-#{book_1.id}" do
         expect(page).to have_content(author_1.name)
       end
       within "#book-#{book_2.id}" do
         expect(page).to have_content(author_2.name)
+        expect(page).to have_content(author_3.name)
       end
     end
 
@@ -67,7 +72,7 @@ describe 'user_index' do
       review_5 = Review.create(title: 'This Book Was Terrific', rating: 4, description: 'Super x99', user_id: user_3.id, book_id: book_2.id)
       review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2.id)
 
-      visit '/books'
+      visit books_path
 
       save_and_open_page
 
