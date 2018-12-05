@@ -32,8 +32,6 @@ describe 'user_index' do
 
       visit '/books'
 
-      binding.pry
-
       expect(page).to have_content(author_1.name)
       expect(page).to have_content(author_2.name)
     end
