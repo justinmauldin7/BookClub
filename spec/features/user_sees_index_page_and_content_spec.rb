@@ -27,7 +27,12 @@ describe 'user_index' do
       author_1 = Author.create(name: 'Rock Man')
       author_2 = Author.create(name: 'Rock Woman')
 
+      rel_1 = BookAuthor.create(book_id: book_1.id, author_id: author_1.id)
+      rel_2 = BookAuthor.create(book_id: book_2.id, author_id: author_2.id)
+
       visit '/books'
+
+      binding.pry
 
       expect(page).to have_content(author_1.name)
       expect(page).to have_content(author_2.name)
