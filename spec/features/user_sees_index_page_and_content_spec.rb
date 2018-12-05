@@ -67,6 +67,10 @@ describe 'user_index' do
       review_5 = Review.create(title: 'This Book Was Terrific', rating: 4, description: 'Super x99', user_id: user_3.id, book_id: book_2)
       review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2)
 
+      visit '/books'
+
+      save_and_open_page
+
       within "#book-#{book_1.id}" do
         expect(page).to have_content('Average rating: 3')
         expect(page).to have_content('Total reviews: 2')
