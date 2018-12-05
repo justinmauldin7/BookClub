@@ -62,8 +62,14 @@ describe "as user can see a single book show page" do
     review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2.id)
 
     visit book_path(book_2)
-    save_and_open_page
 
+expect(page).to have_no_content(review_1.title)
+expect(page).to have_no_content(review_1.description)
+
+within "#review-#{review_4.id}" do
+  expect(page).to have_no_content(review_3.title)
+  expect(page).to have_no_content(review_3.description)
+end
     within "#review-#{review_3.id}" do
       expect(page).to have_content(review_3.title)
       expect(page).to have_content(review_3.rating)
