@@ -39,8 +39,8 @@ describe 'book_index' do
       rel_2 = BookAuthor.create(book_id: book_2.id, author_id: author_2.id)
       rel_3 = BookAuthor.create(book_id: book_2.id, author_id: author_3.id)
 
-      visit '/books'
-      
+      visit books_path
+
       within "#book-#{book_1.id}" do
         expect(page).to have_content(author_1.name)
       end
@@ -73,8 +73,6 @@ describe 'book_index' do
       review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: user_4.id, book_id: book_2.id)
 
       visit books_path
-
-      save_and_open_page
 
       within "#book-#{book_1.id}" do
         expect(page).to have_content('Average rating: 3')
