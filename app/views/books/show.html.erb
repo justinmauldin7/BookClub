@@ -10,7 +10,7 @@
 </div>
 
   <% @reviews.each do |review| %>
-  <div id="review-<%= review.id %>">
+  <div class="review" id="review-<%= review.id %>">
   <h4>Review Title: <%= review.title %></h4>
   <h4>Review User: <%= review.user.username %></h4>
   <h4>Review Rating: <%= review.rating %></h4>

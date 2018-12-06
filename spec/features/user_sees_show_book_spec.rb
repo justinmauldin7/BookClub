@@ -63,13 +63,14 @@ describe "as user can see a single book show page" do
 
     visit book_path(book_2)
 
-expect(page).to have_no_content(review_1.title)
-expect(page).to have_no_content(review_1.description)
+    expect(page).to have_no_content(review_1.title)
+    expect(page).to have_no_content(review_1.description)
 
-within "#review-#{review_4.id}" do
-  expect(page).to have_no_content(review_3.title)
-  expect(page).to have_no_content(review_3.description)
-end
+    within "#review-#{review_4.id}" do
+      expect(page).to have_no_content(review_3.title)
+      expect(page).to have_no_content(review_3.description)
+    end
+
     within "#review-#{review_3.id}" do
       expect(page).to have_content(review_3.title)
       expect(page).to have_content(review_3.rating)
@@ -97,6 +98,5 @@ end
       expect(page).to have_content(review_6.description)
       expect(page).to have_content(review_6.user.username)
     end
-
   end
 end
