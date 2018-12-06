@@ -16,7 +16,7 @@ describe 'as a user' do
 
       @user_1 = User.create(username: 'Tod')
       @user_2 = User.create(username: 'Tommy')
-      @user_3 = User.create(username: 'xxTEDxx')
+      @user_3 = User.create(username: 'XxTEDxx')
       @user_4 = User.create(username: '133t')
 
       @review_1 = Review.create(title: 'This Book Was Gneiss', rating: 5, description: 'Super rad', user_id: @user_1.id, book_id: @book_1.id)
@@ -33,7 +33,7 @@ describe 'as a user' do
       title = 'Blew My Mind'
       rating = 4
       description = 'Great book overall.'
-      user = 'xxTEDxx'
+      user = 'XxTEDxx'
 
       expect(page).to have_no_content(title)
       expect(page).to have_no_content(description)
@@ -46,9 +46,10 @@ describe 'as a user' do
       fill_in :review_rating, with: rating
       fill_in :review_description, with: description
       fill_in :review_user, with: user
-
+      fill_in :book_id, with: user
+      save_and_open_page
       click_button 'Create Review'
-      
+
       expect(current_path).to eq(book_path(@book_1.id))
 
       review = Review.last
