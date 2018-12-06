@@ -4,11 +4,18 @@
     <title>BookClub</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag    'reset.css', media: 'all' %>
     <%= stylesheet_link_tag    'application.css', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+    <nav>
+        <ul>
+          <li><a href="<%= root_path %>">Home</a></li>
+          <li><a href="<%= books_path %>">Books</a></li>
+        </ul>
+      </nav>
     <%= yield %>
   </body>
 </html>

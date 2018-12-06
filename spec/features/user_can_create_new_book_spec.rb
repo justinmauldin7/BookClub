@@ -37,4 +37,10 @@ describe "user creates new book on book new page" do
     expect(page).to have_content(book_2.pages)
     expect(page).to have_content(book_2.year)
   end
+
+  it 'can link to the new book page from the book index page' do
+    visit books_path
+    click_on 'Add New Book'
+    expect(current_path).to eq(new_book_path)
+  end
 end

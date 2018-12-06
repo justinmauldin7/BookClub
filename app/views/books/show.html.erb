@@ -1,12 +1,13 @@
 <div id="book-<%= @book.id %>">
   <h3><%= @book.title %></h3>
+  <h4>Authors:</h4>
   <% @book.authors.each do |author| %>
-  <h4><%= author.name %></h4>
+  <h5><%= author.name %></h5>
   <% end %>
-  <h4>Pages: <%= @book.pages %></h4>
-  <h4>Year: <%= @book.year %></h4>
-  <h4>Total reviews: <%= @book.review_count %></h4>
-  <h4>Average rating: <%= @book.average_rating %></h4>
+  <h5>Pages: <%= @book.pages %></h5>
+  <h5>Year: <%= @book.year %></h5>
+  <h5>Total reviews: <%= @book.review_count %></h5>
+  <h5>Average rating: <%= @book.average_rating %></h5>
 </div>
 
   <% @reviews.each do |review| %>
