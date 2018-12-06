@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   validates :title, uniqueness: true
 
   has_many :book_authors
-  has_many :authors, through: :book_authors
+  has_many :authors, through: :book_authors, :dependent => :destroy
   has_many :reviews
 
   def average_rating

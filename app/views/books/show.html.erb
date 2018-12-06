@@ -16,3 +16,5 @@
   <h4>Review Rating: <%= review.rating %></h4>
   <p>Review: <%= review.description %></p>
   <% end %>
+
+  <%= button_to "Delete", book_path(@book.id), method: :delete %>
