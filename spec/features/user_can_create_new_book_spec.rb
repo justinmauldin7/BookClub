@@ -23,7 +23,7 @@ describe "user creates new book on book new page" do
 
     visit new_book_path
 
-    fill_in :book_title, with: book_2.title
+    fill_in :book_title, with: "Harry Potter"
     fill_in :book_authors, with: " rock woman , rock child"
     fill_in :book_pages, with: book_2.pages
     fill_in :book_year, with: book_2.year
@@ -31,7 +31,7 @@ describe "user creates new book on book new page" do
     click_on "Create Book"
 
     expect(current_path).to eq("/books/#{Book.last.id}")
-    expect(page).to have_content(book_2.title)
+    expect(page).to have_content("Harry Potter")
     expect(page).to have_content("Rock Woman")
     expect(page).to have_content("Rock Child")
     expect(page).to have_content(book_2.pages)
