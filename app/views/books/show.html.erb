@@ -10,6 +10,7 @@
   <h5>Average rating: <%= @book.average_rating %></h5>
 </div>
 
+<h4><a href='<%= new_review_path %>'>Add Review</a></h4>
   <% @reviews.each do |review| %>
   <div class="review" id="review-<%= review.id %>">
   <h4>Review Title: <%= review.title %></h4>

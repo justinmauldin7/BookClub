@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :books, except: [:update]
   resources :authors, only: [:show]
+  resources :reviews, only: [:new]
 end
