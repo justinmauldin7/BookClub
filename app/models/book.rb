@@ -11,4 +11,13 @@ class Book < ApplicationRecord
   def review_count
     reviews.count
   end
+
+  def self.create_book(params)
+    authors = params[:authors].titleize.split(",")
+    params[:authors] = authors.map do |author|
+      Author.find_or_create_by(name: author.strip)
+    end
+
+    Book.create(params)
+  end
 end
