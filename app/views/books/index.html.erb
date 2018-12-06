@@ -6,7 +6,7 @@
   <% end %>
   <h4>Pages: <%= book.pages %></h4>
   <h4>Year: <%= book.year %></h4>
-  <h4>Total reviews: <%= book.reviews.count %></h4>
-  <h4>Average rating: <%= book.average_rating(book.id) %></h4>
+  <h4>Total reviews: <%= book.review_count %></h4>
+  <h4>Average rating: <%= book.average_rating %></h4>
 </div>
 <% end %>

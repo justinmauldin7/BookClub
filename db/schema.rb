@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20181205014235) do
     t.string "description"
     t.bigint "book_id"
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
