@@ -31,6 +31,7 @@ describe "user can delete book on book show page" do
   end
 
   it "deletes a book" do
+    
     visit book_path(@book_1)
 
     click_on "Delete"
