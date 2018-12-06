@@ -1,8 +1,8 @@
 <% @books.each do |book| %>
 <div class='book' id="book-<%= book.id %>"
-  <h3><%= book.title %></h3>
+  <h3><a href="<%= book_path(book.id) %>"><%= book.title %></a></h3>
   <% book.authors.each do |author| %>
-  <h4><%= author.name %></h4>
+  <h4><a href="<%= author_path(author.id) %>"><%= author.name %></a></h4>
   <% end %>
   <h4>Pages: <%= book.pages %></h4>
   <h4>Year: <%= book.year %></h4>
