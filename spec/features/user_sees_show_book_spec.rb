@@ -125,6 +125,6 @@ describe "as user can see a single book show page" do
     visit book_path(@book_1.id)
 
     click_on 'Add Review'
-    expect(current_path).to eq(new_review_path)
+    expect(current_path).to eq(new_book_review_path(@book_1.id))
   end
 end

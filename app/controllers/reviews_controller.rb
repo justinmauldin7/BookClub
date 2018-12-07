@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
   def new
+    @book = Book.find(params[:book_id])
     @review = Review.new
-    @book = Book.new
   end
 
   def create
-    review = Review.create_review(review_params)
-    binding.pry
+    book = Book.find(params[:book_id])
+    review = book.reviews.create_review(review_params)
     redirect_to book_path(review.book.id)
   end
 
