@@ -1,0 +1,8 @@
+<h1><%= @author.name %></h1>
+<% @books.each do |book| %>
+<div class='book' id='book-<%= book.id %>'>
+  <h3><a href='<%= book_path(book.id) %>'><%= book.title %></a></h3>
+  <h4>Publication year: <%= book.year %></h4>
+  <h4>Number of Pages: <%= book.pages %></h4>
+</div>
+<% end %>

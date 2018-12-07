@@ -31,6 +31,9 @@ describe "user can delete book on book show page" do
   end
 
   it "deletes a book" do
+    visit books_path
+    expect(page).to have_content(@book_1.title)
+
     visit book_path(@book_1)
 
     click_on "Delete"

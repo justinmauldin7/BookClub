@@ -1,20 +1,22 @@
 <div id="book-<%= @book.id %>">
   <h3><%= @book.title %></h3>
+  <h4>Authors:</h4>
   <% @book.authors.each do |author| %>
-  <h4><%= author.name %></h4>
+  <h5><%= author.name %></h5>
   <% end %>
-  <h4>Pages: <%= @book.pages %></h4>
-  <h4>Year: <%= @book.year %></h4>
-  <h4>Total reviews: <%= @book.review_count %></h4>
-  <h4>Average rating: <%= @book.average_rating %></h4>
+  <h5>Pages: <%= @book.pages %></h5>
+  <h5>Year: <%= @book.year %></h5>
+  <h5>Total reviews: <%= @book.review_count %></h5>
+  <h5>Average rating: <%= @book.average_rating %></h5>
 </div>
+<%= button_to "Delete", book_path(@book.id), method: :delete %>
 
+<h4><a href='<%= new_book_review_path(@book.id) %>'>Add Review</a></h4>
   <% @reviews.each do |review| %>
-  <div id="review-<%= review.id %>">
+  <div class="review" id="review-<%= review.id %>">
   <h4>Review Title: <%= review.title %></h4>
   <h4>Review User: <%= review.user.username %></h4>
   <h4>Review Rating: <%= review.rating %></h4>
   <p>Review: <%= review.description %></p>
+  </div>
   <% end %>
-
-  <%= button_to "Delete", book_path(@book.id), method: :delete %>

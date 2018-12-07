@@ -1,8 +1,9 @@
+<h3><a href='<%= new_book_path %>'>Add New Book</a></h3>
 <% @books.each do |book| %>
-<div id="book-<%= book.id %>"
-  <h3><%= book.title %></h3>
+<div class='book' id="book-<%= book.id %>"
+  <h3><a href="<%= book_path(book.id) %>"><%= book.title %></a></h3>
   <% book.authors.each do |author| %>
-  <h4><%= author.name %></h4>
+  <h4><a href="<%= author_path(author.id) %>"><%= author.name %></a></h4>
   <% end %>
   <h4>Pages: <%= book.pages %></h4>
   <h4>Year: <%= book.year %></h4>
@@ -10,3 +11,4 @@
   <h4>Average rating: <%= book.average_rating %></h4>
 </div>
 <% end %>
+<h3><a href='<%= new_book_path %>'>Add a New Book</a></h3>
