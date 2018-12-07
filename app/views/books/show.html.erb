@@ -9,6 +9,7 @@
   <h5>Total reviews: <%= @book.review_count %></h5>
   <h5>Average rating: <%= @book.average_rating %></h5>
 </div>
+<%= button_to "Delete", book_path(@book.id), method: :delete %>
 
 <h4><a href='<%= new_book_review_path(@book.id) %>'>Add Review</a></h4>
   <% @reviews.each do |review| %>
@@ -17,6 +18,5 @@
   <h4>Review User: <%= review.user.username %></h4>
   <h4>Review Rating: <%= review.rating %></h4>
   <p>Review: <%= review.description %></p>
+  </div>
   <% end %>
-
-  <%= button_to "Delete", book_path(@book.id), method: :delete %>
