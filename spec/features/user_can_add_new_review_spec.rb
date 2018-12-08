@@ -60,5 +60,24 @@ describe 'as a user' do
         expect(page).to have_content(user)
       end
     end
+
+      it 'only allows a rating of 1-5' do
+
+        title = 'Blew My Mind'
+        rating = 10
+        description = 'Great book overall.'
+        user = 'Teddy'
+
+        visit new_book_review_path(@book_2.id)
+
+        fill_in :review_title, with: title
+        fill_in :review_rating, with: rating
+        fill_in :review_description, with: description
+        fill_in :review_user, with: user
+
+        click_button 'Create Review'
+
+        expect(current_path).to eq(book_path(@book_2.id))
+      end
+    end
   end
-end
