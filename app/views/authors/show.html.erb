@@ -2,6 +2,14 @@
 <% @books.each do |book| %>
 <div class='book' id='book-<%= book.id %>'>
   <h3><a href='<%= book_path(book.id) %>'><%= book.title %></a></h3>
+  <% if book.has_many_authors? %>
+    <h4>Additional Authors:</h4>
+    <% end %>
+  <% book.authors.each do |author|%>
+    <% if author.name != @author.name %>
+      <h4><%= author.name %></h4>
+    <% end %>
+  <% end %>
   <h4>Publication year: <%= book.year %></h4>
   <h4>Number of Pages: <%= book.pages %></h4>
 </div>

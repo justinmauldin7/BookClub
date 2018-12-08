@@ -45,5 +45,14 @@ describe 'visiting an author page' do
       click_on @book_2.title
       expect(current_path).to eq(book_path(@book_2.id))
     end
+
+    it 'can see list of co-authors of books' do
+      visit author_path(@author_2.id)
+
+      within("#book-#{@book_1.id}") do
+        expect(page).to have_content(@author_1.name)
+        expect(page).to have_no_content(@author_2.name)
+      end
+    end
   end
 end
