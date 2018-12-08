@@ -1,0 +1,12 @@
+<h1>Username: <%= @user.username %></h1>
+<%= link_to "Sort by newest first", user_path(@user.id, sort: 'newest_first') %>
+<%= link_to "Sort by oldest first", user_path(@user.id, sort: 'oldest_first') %>
+<% @user.sorted_reviews(params[:sort]).each do |review| %>
+<div class='review' id='review-<%= review.id %>'>
+  <h2>Book: <%= link_to "#{review.book.title}", book_path(review.book.id) %></h2>
+  <h2><%= review.title %></h2>
+  <h3>Rating: <%= review.rating %></h3>
+  <h3>Description:</h3>
+  <p><%= review.description %></p>
+</div>
+<% end %>
