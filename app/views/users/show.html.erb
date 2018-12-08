@@ -8,5 +8,6 @@
   <h3>Rating: <%= review.rating %></h3>
   <h3>Description:</h3>
   <p><%= review.description %></p>
+  <%= button_to "Delete", book_review_path(review.user.id, review.id), method: :delete %>
 </div>
 <% end %>

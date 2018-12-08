@@ -10,6 +10,4 @@ class Review < ApplicationRecord
     Review.create(params)
   end
 
-
-
 end
