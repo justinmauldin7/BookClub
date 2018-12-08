@@ -23,4 +23,8 @@ class Book < ApplicationRecord
 
     Book.create(params)
   end
+
+  def has_many_authors?
+    authors.count > 1  
+  end
 end
