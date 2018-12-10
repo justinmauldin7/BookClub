@@ -61,6 +61,26 @@ RSpec.describe Book, type: :model do
       expect(has_reviews_1).to eq(true)
       expect(has_reviews_3).to eq(false)
     end
+
+    it 'can return top and bottom 3 reviews for a book' do
+      top_3 = [@review_3, @review_5, @review_6]
+      bottom_3 = [@review_4, @review_6, @review_5]
+
+      expect(@book_2.top_reviews).to eq(top_3)
+      expect(@book_2.bottom_reviews).to eq(bottom_3)
+    end
+
+    it 'will return 0 or top or bottom reviews if less than 3 exist' do
+      top_reviews = [@review_1, @review_2]
+      bottom_reviews = [@review_2, @review_1]
+      no_reviews = []
+
+      expect(@book_1.top_reviews).to eq(top_reviews)
+      expect(@book_1.bottom_reviews).to eq(bottom_reviews)
+
+      expect(@book_3.top_reviews).to eq(no_reviews)
+      expect(@book_3.bottom_reviews).to eq(no_reviews)
+    end
   end
 
   describe 'class methods' do

@@ -37,4 +37,22 @@ class Book < ApplicationRecord
   def has_reviews?
     reviews.count > 0
   end
+
+  def top_reviews
+    top = reviews.order(rating: :desc)
+    if top.count < 3
+      return top
+    else
+      return top[0..2]
+    end
+  end
+
+  def bottom_reviews
+    bottom = reviews.order(rating: :asc)
+    if bottom.count < 3
+      return bottom
+    else
+      return bottom[0..2]
+    end
+  end
 end
