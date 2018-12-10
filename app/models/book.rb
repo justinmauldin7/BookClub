@@ -7,16 +7,19 @@ class Book < ApplicationRecord
   has_many :reviews, :dependent => :destroy
 
   def self.sort_by(sort_method)
-    binding.pry
     case sort_method
     when nil
       return all
     when "arhtl"
-      
+
     when "nophtl"
       return order(pages: :desc)
     when "noplth"
       return order(pages: :asc)
+    when "norltm"
+      return Book.left_outer_joins(:reviews).select("books.*, count(reviews) AS review_count").order("review_count asc").group("books.id")
+    when "normtl"
+      return Book.left_outer_joins(:reviews).select("books.*, count(reviews) AS review_count").order("review_count desc").group("books.id")
     else
       return all
 
