@@ -11,7 +11,9 @@ class Book < ApplicationRecord
     when nil
       return all
     when "arhtl"
-
+      return Book.left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating desc").group("books.id")
+    when "arlth"
+      return Book.left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating asc").group("books.id")
     when "nophtl"
       return order(pages: :desc)
     when "noplth"
@@ -24,6 +26,14 @@ class Book < ApplicationRecord
       return all
 
     end
+  end
+
+  def self.top_books
+    left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating desc").group("books.id")[0..2]
+  end
+
+  def self.bottom_books
+    left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating asc").group("books.id")[0..2]
   end
 
   def average_rating

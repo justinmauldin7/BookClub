@@ -10,4 +10,8 @@ class User < ApplicationRecord
       return reviews.order(created_at: :desc)
     end
   end
+
+  def self.most_reviews
+    left_outer_joins(:reviews).select("users.*, count(reviews.id) AS review_count").order("review_count desc").group("users.id")[0..2]
+  end
 end

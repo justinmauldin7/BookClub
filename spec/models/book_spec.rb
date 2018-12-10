@@ -81,10 +81,17 @@ RSpec.describe Book, type: :model do
       expect(@book_3.top_reviews).to eq(no_reviews)
       expect(@book_3.bottom_reviews).to eq(no_reviews)
     end
+
+    it "can find average rating for a book" do
+      average_rating = 3.0
+      book_2 = @book_2.average_rating
+
+      expect(book_2).to eq(average_rating)
+    end
   end
 
   describe 'class methods' do
-    xit "can find average rating for a book" do
+    before(:each) do
       @author_1 = Author.create(name: 'Rock Man')
       @author_2 = Author.create(name: 'Rock Woman')
 
@@ -102,12 +109,7 @@ RSpec.describe Book, type: :model do
       @review_4 = Review.create(title: 'This Book Was Horrible', rating: 1, description: 'Bad Bad Bad', user_id: @user_2.id, book_id: @book_2.id)
       @review_5 = Review.create(title: 'This Book Was Terrific', rating: 4, description: 'Super x99', user_id: @user_3.id, book_id: @book_2.id)
       @review_6 = Review.create(title: 'This Book Was Abyssmal', rating: 2, description: 'Worse than bad', user_id: @user_4.id, book_id: @book_2.id)
-
-
-      average_rating = 3.0
-      book_2 = @book_2.average_rating
-
-      expect(book_2).to eq(average_rating)
     end
+
   end
 end
