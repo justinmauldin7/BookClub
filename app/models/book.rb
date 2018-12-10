@@ -7,7 +7,9 @@ class Book < ApplicationRecord
   has_many :reviews, :dependent => :destroy
 
   def average_rating
-    reviews.average(:rating)
+    ave_rating = reviews.average(:rating)
+    return ave_rating.round(1) if ave_rating != nil
+    ave_rating
   end
 
   def review_count
@@ -25,6 +27,6 @@ class Book < ApplicationRecord
   end
 
   def has_many_authors?
-    authors.count > 1  
+    authors.count > 1
   end
 end
