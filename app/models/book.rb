@@ -13,6 +13,13 @@ class Book < ApplicationRecord
       return all
     when "arhtl"
       
+    when "nophtl"
+      return order(pages: :desc)
+    when "noplth"
+      return order(pages: :asc)
+    else
+      return all
+
     end
   end
 
