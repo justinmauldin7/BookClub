@@ -6,6 +6,7 @@ describe 'visiting an author page' do
       @book_1 = Book.create(title:'How To Test Ruby', pages: 2, year: 1934)
       @book_2 = Book.create(title:'How To Test Diamonds', pages: 3853, year: 1895)
       @book_3 = Book.create(title:'How To Sew', pages: 7, year: 2014)
+      @book_4 = Book.create(title:'How To Sew 2', pages: 7, year: 2014)
 
       @author_1 = Author.create(name: 'Rock Man')
       @author_2 = Author.create(name: 'Rock Woman')
@@ -13,6 +14,8 @@ describe 'visiting an author page' do
       @rel_1 = BookAuthor.create(book_id: @book_1.id, author_id: @author_1.id)
       @rel_3 = BookAuthor.create(book_id: @book_1.id, author_id: @author_2.id)
       @rel_2 = BookAuthor.create(book_id: @book_2.id, author_id: @author_2.id)
+      @rel_4 = BookAuthor.create(book_id: @book_3.id, author_id: @author_2.id)
+      @rel_5 = BookAuthor.create(book_id: @book_4.id, author_id: @author_1.id)
 
       @user_1 = User.create(username: 'Tod')
       @user_2 = User.create(username: 'Tommy')
@@ -33,7 +36,7 @@ describe 'visiting an author page' do
       expect(page).to have_content(@book_1.year)
       expect(page).to have_content(@book_1.pages)
       expect(page).to have_content(@book_2.title)
-      expect(page).to have_no_content(@book_3.title)
+      expect(page).to have_no_content(@book_4.title)
     end
 
     it 'can click on book titles to go to book show page' do
@@ -52,6 +55,29 @@ describe 'visiting an author page' do
       within("#book-#{@book_1.id}") do
         expect(page).to have_content(@author_1.name)
         expect(page).to have_no_content(@author_2.name)
+      end
+    end
+
+    it 'can see the top review for each book' do
+      visit author_path(@author_2.id)
+
+      within("#book-#{@book_1.id}") do
+        expect(page).to have_content(@review_1.title)
+        expect(page).to have_content(@review_1.rating)
+        expect(page).to have_content(@review_1.user.username)
+        expect(page).to have_no_content(@review_2.title)
+      end
+      within("#book-#{@book_2.id}") do
+        expect(page).to have_content(@review_3.title)
+        expect(page).to have_no_content(@review_1.title)
+      end
+    end
+
+    it 'doesnt see any reviews if there are no reviews' do
+      visit author_path(@author_2.id)
+
+      within("#book-#{@book_3.id}") do
+        expect(page).to have_no_content('Top Review')
       end
     end
   end

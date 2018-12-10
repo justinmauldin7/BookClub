@@ -13,5 +13,13 @@
   <% end %>
   <h4>Publication year: <%= book.year %></h4>
   <h4>Number of Pages: <%= book.pages %></h4>
+  <% if book.has_reviews? %>
+  <h4>Top Review: </h4>
+  <h5>Title: <%= book.top_review.title %></h5>
+  <h5>Rating: <%= book.top_review.rating %></h5>
+  <h5>User: <%= book.top_review.user.username %></h5>
+  <% else %>
+  <h4>Be the first to rate this book!</h4>
+  <% end %>
 </div>
 <% end %>

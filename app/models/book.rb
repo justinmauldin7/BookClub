@@ -29,4 +29,12 @@ class Book < ApplicationRecord
   def has_many_authors?
     authors.count > 1
   end
+
+  def top_review
+    reviews.order(rating: :desc).first
+  end
+
+  def has_reviews?
+    reviews.count > 0
+  end
 end
