@@ -29,8 +29,8 @@ RSpec.describe User, type: :model do
       sorted_reviews_new_first = @user_1.sorted_reviews('newest_first')
       sorted_reviews_old_first = @user_1.sorted_reviews('oldest_first')
 
-      expect(sorted_reviews_new_first). to eq([@review_3, @review_1])
-      expect(sorted_reviews_old_first). to eq([@review_1, @review_3])
+      expect(sorted_reviews_new_first).to eq([@review_3, @review_1])
+      expect(sorted_reviews_old_first).to eq([@review_1, @review_3])
     end
   end
 end

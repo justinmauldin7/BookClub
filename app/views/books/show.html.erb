@@ -6,13 +6,34 @@
   <% end %>
   <h5>Pages: <%= @book.pages %></h5>
   <h5>Year: <%= @book.year %></h5>
+  <h3>Statistics:</h3>
   <h5>Total reviews: <%= @book.review_count %></h5>
   <h5>Average rating: <%= @book.average_rating %></h5>
+  <h5>Top 3 reviews: </h5>
+  <div class="top-review" id="top-review-<%= @book.id %>">
+    <% @book.top_reviews.each do |review| %>
+    <div class='review'>
+    <h4>Review Title: <%= review.title %></h4>
+    <h4>Review User: <%= link_to "#{review.user.username}", user_path(review.user.id) %></h4>
+    <h4>Review Rating: <%= review.rating %></h4>
+    </div>
+    <% end %>
+  </div>
+  <h5>Bottom 3 reviews:</h5>
+  <div class="bottom-review" id="bottom-review-<%= @book.id %>">
+    <% @book.bottom_reviews.each do |review| %>
+    <div class='review'>
+    <h4>Review Title: <%= review.title %></h4>
+    <h4>Review User: <%= link_to "#{review.user.username}", user_path(review.user.id) %></h4>
+    <h4>Review Rating: <%= review.rating %></h4>
+    </div>
+    <% end %>
+  </div>
 </div>
 <%= button_to "Delete", book_path(@book.id), method: :delete %>
-
+<h2>All reviews:</h2>
 <h4><a href='<%= new_book_review_path(@book.id) %>'>Add Review</a></h4>
-  <% @reviews.each do |review| %>
+  <% @book.reviews.each do |review| %>
   <div class="review" id="review-<%= review.id %>">
   <h4>Review Title: <%= review.title %></h4>
   <h4>Review User: <%= link_to "#{review.user.username}", user_path(review.user.id) %></h4>
