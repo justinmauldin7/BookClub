@@ -6,6 +6,16 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :reviews, :dependent => :destroy
 
+  def self.sort_by(sort_method)
+    binding.pry
+    case sort_method
+    when nil
+      return all
+    when "arhtl"
+      
+    end
+  end
+
   def average_rating
     ave_rating = reviews.average(:rating)
     return ave_rating.round(1) if ave_rating != nil

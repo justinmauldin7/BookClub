@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.sort_by(params[:sort])
   end
 
   def show
