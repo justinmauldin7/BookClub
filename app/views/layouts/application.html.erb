@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'reset.css', media: 'all' %>
     <%= stylesheet_link_tag    'application.css', media: 'all' %>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400i" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -14,6 +15,9 @@
         <ul>
           <li><a href="<%= root_path %>">Home</a></li>
           <li><a href="<%= books_path %>">Books</a></li>
+          <li><a href="<%= books_path %>">Movies</a></li>
+          <li><a href="<%= books_path %>">Music</a></li>
+          <li><a href="<%= books_path %>">Login</a></li>
         </ul>
       </nav>
     <%= yield %>
