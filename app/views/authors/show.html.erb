@@ -1,5 +1,7 @@
-<h1><%= @author.name %></h1>
-<%= button_to "Delete", author_path(@author.id), method: :delete %>
+<div class='author-to-middle'><h1><b><%= @author.name %></b></h1></div>
+<div class='button-to-middle'>
+  <%= button_to "Delete", author_path(@author.id), method: :delete, class: 'button delete-button' %>
+</div>
 <% @books.each do |book| %>
 <div class='book' id='book-<%= book.id %>'>
   <h3><a href='<%= book_path(book.id) %>'><%= book.title %></a></h3>
@@ -17,7 +19,7 @@
   <h4>Top Review: </h4>
   <h5>Title: <%= book.top_review.title %></h5>
   <h5>Rating: <%= book.top_review.rating %></h5>
-  <h5>User: <%= book.top_review.user.username %></h5>
+  <h5>User: <a href='<%= user_path(book.top_review.user.id) %>'><%= book.top_review.user.username %></a></h5>
   <% else %>
   <h4>Be the first to rate this book!</h4>
   <% end %>

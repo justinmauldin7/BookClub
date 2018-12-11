@@ -1,31 +1,42 @@
-<h4><a href='<%= new_book_path %>'>Add New Book</a></h4>
-<%= link_to "Average rating high to low", books_path(sort: 'arhtl') %>
-<%= link_to "Average rating low to high", books_path(sort: 'arlth') %>
-<%= link_to "Number of pages high to low", books_path(sort: 'nophtl') %>
-<%= link_to "Number of pages low to high", books_path(sort: 'noplth') %>
-<%= link_to "Number of reviews most to least", books_path(sort: 'normtl') %>
-<%= link_to "Number of reviews least to most", books_path(sort: 'norltm') %>
-<div>
-<h2>Book Statistics:</h2>
-<% @books_top_books.each do |book| %>
-  <div class="top-3-books">
-  <h3><%= book.average_rating %>
-  <%= book.title %></h3>
+<div class='sort-methods'>
+  <ul>
+    <li><%= link_to "Average rating high to low", books_path(sort: 'arhtl') %></li>
+    <li><%= link_to "Average rating low to high", books_path(sort: 'arlth') %></li>
+    <li><%= link_to "Number of pages high to low", books_path(sort: 'nophtl') %></li>
+    <li><%= link_to "Number of pages low to high", books_path(sort: 'noplth') %></li>
+    <li><%= link_to "Number of reviews most to least", books_path(sort: 'normtl') %></li>
+    <li><%= link_to "Number of reviews least to most", books_path(sort: 'norltm') %></li>
+  </ul>
+</div>
+<div class='newbook'>
+  <h4><a href='<%= new_book_path %>'>Add New Book</a></h4>
+</div>
+<div class='statistics'>
+  <h3>Book Statistics:</h3>
+  <div id='topthree'>
+    <h4><b>Top 3 books:</b></h4>
+    <% @books_top_books.each do |book| %>
+      <div class="top-3-books">
+        <h5><a href="<%= book_path(book.id) %>"><%= book.title %></a> Rating:
+          <%= book.average_rating %> </h5>
+      </div>
+    <% end %>
+    <h4><b>Bottom 3 books:</b></h4>
+    <% @books_bottom_books.each do |book| %>
+      <div class="bottom-3-books">
+        <h5><a href="<%= book_path(book.id) %>"><%= book.title %></a> Rating:
+          <%= book.average_rating ? book.average_rating : 0.0 %>
+      </h5>
+      </div>
+    <% end %>
+    <h4><b>Top 3 reviewers:</b></h4>
+    <% @users_most_reviews.each do |user| %>
+      <div class="most-reviews">
+      <h5><a href="<%= user_path(user.id) %>"><%= user.username %></a>
+      <%= user.review_count %> reviews</h5>
+      </div>
+    <% end %>
   </div>
-<% end %>
-<% @books_bottom_books.each do |book| %>
-  <div class="bottom-3-books">
-  <h3><%= book.average_rating ? book.average_rating : 0.0 %>
-  <%= book.title %></h3>
-  </div>
-<% end %>
-
-<% @users_most_reviews.each do |user| %>
-  <div class="most-reviews">
-  <h3><%= user.username %>
-  <%= user.review_count %></h3>
-  </div>
-<% end %>
 </div>
 
 <% @books.each do |book| %>
@@ -41,4 +52,6 @@
   <h4>Average rating: <%= book.average_rating %></h4>
 </div>
 <% end %>
-<h4><a href='<%= new_book_path %>'>Add a New Book</a></h4>
+<div class='newbook'>
+  <h4><a href='<%= new_book_path %>'>Add a New Book</a></h4>
+</div>

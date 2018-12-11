@@ -1,6 +1,8 @@
-<h1>Username: <%= @user.username %></h1>
-<%= link_to "Sort by newest first", user_path(@user.id, sort: 'newest_first') %>
-<%= link_to "Sort by oldest first", user_path(@user.id, sort: 'oldest_first') %>
+<div class='author-to-middle'><h1><b>Username:</b> <%= @user.username %></h1></div>
+<div class='user-sort'>
+  <%= link_to "Sort by newest first", user_path(@user.id, sort: 'newest_first') %>
+  <%= link_to "Sort by oldest first", user_path(@user.id, sort: 'oldest_first') %>
+</div>
 <% @user.sorted_reviews(params[:sort]).each do |review| %>
 <div class='review' id='review-<%= review.id %>'>
   <h2>Book: <%= link_to "#{review.book.title}", book_path(review.book.id) %></h2>
@@ -8,6 +10,8 @@
   <h3>Rating: <%= review.rating %></h3>
   <h3>Description:</h3>
   <p><%= review.description %></p>
-  <%= button_to "Delete", book_review_path(review.user.id, review.id), method: :delete %>
+  <div class='button-to-middle'>
+    <%= button_to "Delete", book_review_path(review.user.id, review.id), method: :delete, class: 'button delete-button' %>
+  </div>
 </div>
 <% end %>

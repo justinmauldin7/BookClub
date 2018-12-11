@@ -1,31 +1,67 @@
+html {
+  background-image: url('library.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #354876;
+}
+
 body {
   max-width: 1000px;
-  margin: auto;
+  margin: 10px auto;
   border-width: 5px;
   border-style: solid;
   border-radius: 10px;
   padding: 20px;
-  background-color: #354876;
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 25px;
-  color: #9CEC5B
+  font-family: 'Crimson Text', serif;;
+  font-size: 32px;
+  color: lightgrey;
+  text-shadow: 5px 5px 9px #000000;
 }
 
+.sort-methods {
+  font-size: 65%;
+  line-height: 1.3em;
+}
 
-body h1 {
-  font-size: 200%;
-  margin: 8px;
+.sort-methods ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 7px;
 }
-body h3 {
-  font-size: 150%;
-  margin: 8px;
+
+.sort-methods li {
+    float: left;
+    padding: 15px;
 }
-h4 {
+
+h1 {
   font-size: 120%;
+  margin: 8px;
+}
+
+h2 {
+  font-size: 100%;
+  margin: 8px;
+}
+
+h3 {
+  font-size: 90%;
+  margin: 8px;
+}
+
+h4 {
+  font-size: 80%;
    margin: 8px;
 }
+
 h5 {
-  font-size: 120%;
+  font-size: 70%;
   margin: 8px;
 }
 
@@ -35,28 +71,28 @@ p {
 }
 
 a {
-    /* display: block; */
-    color: #9CEC5B;
-    /* text-align: center; */
-    /* padding: 14px 16px; */
-    /* text-decoration: none; */
+    color: lightgrey;
 }
 
 a:hover {
-    background-color: #F0F465;
-    color: #354876;
+    color: white;
+    transition-duration: 0.2s;
 }
 
 nav {
   display: inline;
+  font-weight: bold;
+  text-shadow: 3px 3px 12px #444444;
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
     overflow: hidden;
-    background-color: #9CEC5B;
+    background-color: lightgrey;
     border-radius: 7px;
 }
 
@@ -66,34 +102,116 @@ nav li {
 
 nav li a {
     display: block;
-    color: #354876;
+    color: #323438;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 nav li a:hover {
-    background-color: #F0F465;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    color: #323438
+}
+
+.newbook {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 5px solid lightgrey;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .review {
   margin: 10px;
   padding: 10px;
-  border: 5px solid #9CEC5B;
-  background-color: rgba(0, 0, 0, 0.3);
+  border: 5px solid lightgrey;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
+
 .book {
   margin: 10px;
   padding: 10px;
-  border: 5px solid #9CEC5B;
+  border: 5px solid lightgrey;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.top-review {
-  margin: 15px 40px;
+.statistics {
+  border: 5px solid lightgrey;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 10px;
+  padding: 10px;
 }
 
-.bottom-review {
-  margin: 15px 40px;
+.bookshow {
+  text-align: center;
+}
+
+b {
+  font-weight: bold;
+}
+
+#topthree {
+  padding: 0 0 0 40px;
+}
+
+#welcome {
+  text-align: center;
+  font-size: 150%;
+  text-shadow: 2px 2px 12px #111111;
+  font-weight: bold;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 4px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.delete-button {
+  padding: 10px 28px;
+  font-size: 16px;
+  margin: 4px 4px;
+  background-color: transparent;
+  border-radius: 6px;
+  color: lightgrey;
+}
+
+.button:hover {
+  background-color: lightgrey;
+  color: black;
+}
+
+.button-to-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.author-to-middle h1 {
+  text-align: center;
+}
+
+.user-sort {
+  display: flex;
+  justify-content: center;
+}
+
+.user-sort a {
+  padding: 0 10px;
 }
