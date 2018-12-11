@@ -9,13 +9,13 @@
 <h2>Book Statistics:</h2>
 <% @books_top_books.each do |book| %>
   <div class="top-3-books">
-  <h3><%= book.average_rating %> 
+  <h3><%= book.average_rating %>
   <%= book.title %></h3>
   </div>
 <% end %>
 <% @books_bottom_books.each do |book| %>
   <div class="bottom-3-books">
-  <h3><%= book.average_rating %>
+  <h3><%= book.average_rating ? book.average_rating : 0.0 %>
   <%= book.title %></h3>
   </div>
 <% end %>
