@@ -85,32 +85,58 @@ describe 'book_index' do
       click_on 'Average rating high to low'
       expect(all('.book')[0]).to have_content(@book_3.title)
       expect(all('.book')[1]).to have_content(@book_2.title)
-      expect(all('.book')[-1]).to have_content(@book_1.title)
+      expect(all('.book')[2]).to have_content(@book_1.title)
+      expect(all('.book')[3]).to have_content(@book_4.title)
 
       click_on 'Average rating low to high'
-      expect(all('.book')[0]).to have_content(@book_1.title)
-      expect(all('.book')[1]).to have_content(@book_2.title)
-      expect(all('.book')[-1]).to have_content(@book_3.title)
+      expect(all('.book')[0]).to have_content(@book_4.title)
+      expect(all('.book')[1]).to have_content(@book_1.title)
+      expect(all('.book')[2]).to have_content(@book_2.title)
+      expect(all('.book')[3]).to have_content(@book_3.title)
 
       click_on 'Number of pages low to high'
       expect(all('.book')[0]).to have_content(@book_1.title)
       expect(all('.book')[1]).to have_content(@book_3.title)
-      expect(all('.book')[-1]).to have_content(@book_4.title)
+      expect(all('.book')[2]).to have_content(@book_4.title)
+      expect(all('.book')[3]).to have_content(@book_2.title)
 
       click_on 'Number of pages high to low'
       expect(all('.book')[0]).to have_content(@book_2.title)
       expect(all('.book')[1]).to have_content(@book_4.title)
-      expect(all('.book')[-1]).to have_content(@book_3.title)
+      expect(all('.book')[2]).to have_content(@book_3.title)
+      expect(all('.book')[3]).to have_content(@book_1.title)
 
       click_on 'Number of reviews least to most'
       expect(all('.book')[0]).to have_content(@book_4.title)
       expect(all('.book')[1]).to have_content(@book_3.title)
-      expect(all('.book')[-1]).to have_content(@book_1.title)
+      expect(all('.book')[2]).to have_content(@book_1.title)
+      expect(all('.book')[3]).to have_content(@book_2.title)
 
       click_on 'Number of reviews most to least'
       expect(all('.book')[0]).to have_content(@book_2.title)
       expect(all('.book')[1]).to have_content(@book_1.title)
-      expect(all('.book')[-1]).to have_content(@book_3.title)
+      expect(all('.book')[2]).to have_content(@book_3.title)
+      expect(all('.book')[3]).to have_content(@book_4.title)
+    end
+
+    it 'shows 3 top & 3 bottom books, as well as, 3 users with most reviews' do
+      @review_8 = Review.create(title: 'This Book Was awesome!', rating: 4, description: 'Worse than terrible', user_id: @user_1.id, book_id: @book_3.id)
+      @review_9 = Review.create(title: 'This Book Was Barely readible', rating: 1, description: 'Worse than worse', user_id: @user_4.id, book_id: @book_3.id)
+      @review_10 = Review.create(title: 'This Book Was horrid', rating: 1, description: 'Worse than badddd', user_id: @user_4.id, book_id: @book_3.id)
+
+      visit books_path
+
+      expect(all('.top-3-books')[0]).to have_content(@book_2.title)
+      expect(all('.top-3-books')[1]).to have_content(@book_3.title)
+      expect(all('.top-3-books')[2]).to have_content(@book_1.title)
+
+      expect(all('.bottom-3-books')[0]).to have_content(@book_4.title)
+      expect(all('.bottom-3-books')[1]).to have_content(@book_1.title)
+      expect(all('.bottom-3-books')[2]).to have_content(@book_3.title)
+
+      expect(all('.most-reviews')[0]).to have_content(@user_4.username)
+      expect(all('.most-reviews')[1]).to have_content(@user_1.username)
+      expect(all('.most-reviews')[2]).to have_content(@user_2.username)
     end
   end
 end

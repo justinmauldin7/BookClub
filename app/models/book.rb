@@ -7,20 +7,33 @@ class Book < ApplicationRecord
   has_many :reviews, :dependent => :destroy
 
   def self.sort_by(sort_method)
-    binding.pry
     case sort_method
     when nil
       return all
     when "arhtl"
-      
+      return Book.left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating desc").group("books.id")
+    when "arlth"
+      return Book.left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating asc").group("books.id")
     when "nophtl"
       return order(pages: :desc)
     when "noplth"
       return order(pages: :asc)
+    when "norltm"
+      return Book.left_outer_joins(:reviews).select("books.*, count(reviews) AS review_count").order("review_count asc").group("books.id")
+    when "normtl"
+      return Book.left_outer_joins(:reviews).select("books.*, count(reviews) AS review_count").order("review_count desc").group("books.id")
     else
       return all
 
     end
+  end
+
+  def self.top_books
+    left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating desc").group("books.id")[0..2]
+  end
+
+  def self.bottom_books
+    left_outer_joins(:reviews).select("books.*, coalesce(avg(reviews.rating), 0) AS review_rating").order("review_rating asc").group("books.id")[0..2]
   end
 
   def average_rating
